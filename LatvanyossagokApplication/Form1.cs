@@ -89,7 +89,7 @@ namespace LatvanyossagokApplication
                 MessageBox.Show("Nem számot adott meg a város lakosságának számának!");
                 textBoxLakossag.Text = textBoxLakossag.Text.Remove(textBoxLakossag.Text.Length - 1);
             }
-
+           
 
             else if (!System.Text.RegularExpressions.Regex.IsMatch(textBoxVarosNev.Text, "^[a-zA-Z ]"))
             {
@@ -102,6 +102,7 @@ namespace LatvanyossagokApplication
                 MessageBox.Show("A városban nem laknak emberek?");
             }
 
+            //sd
 
             else
             {
