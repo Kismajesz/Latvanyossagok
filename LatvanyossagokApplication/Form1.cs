@@ -15,6 +15,7 @@ namespace LatvanyossagokApplication
     {
         MySqlConnection conn;
 
+       
         public Form1()
         {
             InitializeComponent();
@@ -213,9 +214,104 @@ namespace LatvanyossagokApplication
             LatvanyossagListazas();
         }
 
+
+
+
+
+
         private void ListBoxLatvanyossag_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
+        private bool mod;
+        private bool click;
+
+
+        //Próbálkoztam
+        private void BtnModositas_Click(object sender, EventArgs e)
+        {
+            if (mod == false)
+            {
+                click = true;
+
+                if (click == true)
+                {
+                    btnModositas.Text = "Megerosites";
+                    Int32 indexOfSpace = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).IndexOf('-');
+                    Int32 indexOfSpace2 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).IndexOfAny("0123456789".ToCharArray());
+                    string szoveg1 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).Substring(0, indexOfSpace);
+                    string szoveg2 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).Substring(0, indexOfSpace2);
+                    textBoxVarosNev.Text = szoveg1;
+                    textBoxLakossag.Text = szoveg2;
+                    mod = true;
+
+                }
+            }
+
+            else
+            {
+
+                if(mod == true)
+                {
+                    var varos = (Varos)listBoxVaros.SelectedItem;
+                    var id = varos.Id;
+                    var cmd = conn.CreateCommand();
+                    cmd.CommandText = "UPDATE varosok SET nev=@nev, lakossag=@lakossag Where id=@id";
+                    cmd.Parameters.AddWithValue("@nev", textBoxVarosNev.Text);
+                    cmd.Parameters.AddWithValue("@lakossag", textBoxLakossag.Text);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                    btnModositas.Text = "Módosítás";
+                    VarosListazas();
+                }
+            }
+        }
+        //Próbálkoztam
+        private void BtnModositas2_Click(object sender, EventArgs e)
+        {
+
+            if (mod == false)
+            {
+                click = true;
+
+                if (click == true)
+                {
+                    btnModositas.Text = "Megerosites";
+                    Int32 indexOfSpace = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).IndexOf('-');
+                    Int32 indexOfSpace2 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).IndexOf('-');
+                    Int32 indexOfSpace3 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).IndexOfAny("0123456789".ToCharArray());
+                    string szoveg1 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).Substring(0, indexOfSpace);
+                    string szoveg2 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).Substring(0, indexOfSpace2);
+                    string szoveg3 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).Substring(0, indexOfSpace3);
+                    textBoxLatvanyossagNev.Text = szoveg1;
+                    textBoxLeiras.Text = szoveg2;
+                    textBoxAr.Text = szoveg3;
+                    mod = true;
+
+                }
+            }
+
+            else
+            {
+
+                if (mod == true)
+                {
+                    var varos = (Varos)listBoxVaros.SelectedItem;
+                    var id = varos.Id;
+                    var cmd = conn.CreateCommand();
+                    cmd.CommandText = "UPDATE latvanyossagok SET nev=@nev, leiras=@leiras , ar=@ar Where id=@id";
+                    cmd.Parameters.AddWithValue("@nev", textBoxLatvanyossagNev.Text);
+                    cmd.Parameters.AddWithValue("@leiras", textBoxLeiras.Text);
+                    cmd.Parameters.AddWithValue("@ar", textBoxAr.Text);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.ExecuteNonQuery();
+                    btnModositas.Text = "Módosítás";
+                    VarosListazas();
+                }
+            }
+
+        }
+        
     }
 }

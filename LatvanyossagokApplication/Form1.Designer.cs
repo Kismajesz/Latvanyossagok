@@ -48,6 +48,8 @@
             this.listBoxLatvanyossag = new System.Windows.Forms.ListBox();
             this.buttonVarosTorles = new System.Windows.Forms.Button();
             this.buttonLatvanyossagTorles = new System.Windows.Forms.Button();
+            this.btnModositas = new System.Windows.Forms.Button();
+            this.btnModositas2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxVarosNev
@@ -211,11 +213,33 @@
             this.buttonLatvanyossagTorles.UseVisualStyleBackColor = true;
             this.buttonLatvanyossagTorles.Click += new System.EventHandler(this.buttonLatvanyossagTorles_Click);
             // 
+            // btnModositas
+            // 
+            this.btnModositas.Location = new System.Drawing.Point(74, 259);
+            this.btnModositas.Name = "btnModositas";
+            this.btnModositas.Size = new System.Drawing.Size(75, 23);
+            this.btnModositas.TabIndex = 19;
+            this.btnModositas.Text = "Módositas";
+            this.btnModositas.UseVisualStyleBackColor = true;
+            this.btnModositas.Click += new System.EventHandler(this.BtnModositas_Click);
+            // 
+            // btnModositas2
+            // 
+            this.btnModositas2.Location = new System.Drawing.Point(338, 304);
+            this.btnModositas2.Name = "btnModositas2";
+            this.btnModositas2.Size = new System.Drawing.Size(75, 23);
+            this.btnModositas2.TabIndex = 20;
+            this.btnModositas2.Text = "Módositas";
+            this.btnModositas2.UseVisualStyleBackColor = true;
+            this.btnModositas2.Click += new System.EventHandler(this.BtnModositas2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(495, 450);
+            this.Controls.Add(this.btnModositas2);
+            this.Controls.Add(this.btnModositas);
             this.Controls.Add(this.buttonLatvanyossagTorles);
             this.Controls.Add(this.buttonVarosTorles);
             this.Controls.Add(this.listBoxLatvanyossag);
@@ -263,6 +287,8 @@
         private System.Windows.Forms.ListBox listBoxLatvanyossag;
         private System.Windows.Forms.Button buttonVarosTorles;
         private System.Windows.Forms.Button buttonLatvanyossagTorles;
+        private System.Windows.Forms.Button btnModositas;
+        private System.Windows.Forms.Button btnModositas2;
     }
 }
 

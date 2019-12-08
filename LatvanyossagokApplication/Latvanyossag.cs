@@ -37,7 +37,7 @@ namespace LatvanyossagokApplication
             }
             else
             {
-                return nev + " - " + ar + " Ft";
+                return nev + " - " +leiras +" - "+ ar + " Ft";
             }
 
             
