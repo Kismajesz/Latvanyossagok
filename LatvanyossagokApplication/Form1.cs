@@ -224,27 +224,24 @@ namespace LatvanyossagokApplication
 
         }
 
-        private bool mod;
-        private bool click;
+        private bool modositas;
+        private bool kattintas;
 
 
-        //Próbálkoztam
+       
         private void BtnModositas_Click(object sender, EventArgs e)
         {
-            if (mod == false)
+            if (modositas == false)
             {
-                click = true;
+                kattintas = true;
 
-                if (click == true)
+                if (kattintas == true)
                 {
                     btnModositas.Text = "Megerosites";
-                    Int32 indexOfSpace = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).IndexOf('-');
-                    Int32 indexOfSpace2 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).IndexOfAny("0123456789".ToCharArray());
-                    string szoveg1 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).Substring(0, indexOfSpace);
-                    string szoveg2 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).Substring(0, indexOfSpace2);
-                    textBoxVarosNev.Text = szoveg1;
-                    textBoxLakossag.Text = szoveg2;
-                    mod = true;
+                    var varosok = (Varos)listBoxVaros.SelectedItem;
+                    textBoxVarosNev.Text = varosok.Nev;
+                    textBoxLakossag.Text = varosok.Lakossag.ToString();
+                    modositas = true;
 
                 }
             }
@@ -252,7 +249,7 @@ namespace LatvanyossagokApplication
             else
             {
 
-                if(mod == true)
+                if(modositas == true)
                 {
                     var varos = (Varos)listBoxVaros.SelectedItem;
                     var id = varos.Id;
@@ -267,27 +264,22 @@ namespace LatvanyossagokApplication
                 }
             }
         }
-        //Próbálkoztama
+        
         private void BtnModositas2_Click(object sender, EventArgs e)
         {
 
-            if (mod == false)
+            if (modositas == false)
             {
-                click = true;
+                kattintas = true;
 
-                if (click == true)
+                if (kattintas == true)
                 {
-                    btnModositas.Text = "Megerosites";
-                    Int32 indexOfSpace = listBoxLatvanyossag.GetItemText(listBoxVaros.SelectedItem).IndexOf('-');
-                    Int32 indexOfSpace2 = listBoxLatvanyossag.GetItemText(listBoxVaros.SelectedItem).IndexOf('-');
-                    Int32 indexOfSpace3 = listBoxLatvanyossag.GetItemText(listBoxVaros.SelectedItem).IndexOfAny("0123456789".ToCharArray());
-                    string szoveg1 = listBoxLatvanyossag.GetItemText(listBoxLatvanyossag.SelectedItem).Substring(0, indexOfSpace);
-                    string szoveg2 = listBoxLatvanyossag.GetItemText(listBoxLatvanyossag.SelectedItem).Substring(0, indexOfSpace2);
-                    string szoveg3 = listBoxLatvanyossag.GetItemText(listBoxLatvanyossag.SelectedItem).Substring(0, indexOfSpace3);
-                    textBoxLatvanyossagNev.Text = szoveg1;
-                    textBoxLeiras.Text = szoveg2;
-                    textBoxAr.Text = szoveg3;
-                    mod = true;
+                    btnModositas2.Text = "Megerosites";
+                    var latvanyossagok = (Latvanyossag)listBoxLatvanyossag.SelectedItem;
+                    textBoxLatvanyossagNev.Text = latvanyossagok.Nev;
+                    textBoxLeiras.Text = latvanyossagok.Leiras;
+                    textBoxAr.Text = latvanyossagok.Ar.ToString();
+                    modositas = true;
 
                 }
             }
@@ -295,9 +287,9 @@ namespace LatvanyossagokApplication
             else
             {
 
-                if (mod == true)
+                if (modositas == true)
                 {
-                    var varos = (Varos)listBoxLatvanyossag.SelectedItem;
+                    var varos = (Latvanyossag)listBoxLatvanyossag.SelectedItem;
                     var id = varos.Id;
                     var cmd = conn.CreateCommand();
                     cmd.CommandText = "UPDATE latvanyossagok SET nev=@nev, leiras=@leiras , ar=@ar Where id=@id";
@@ -306,8 +298,8 @@ namespace LatvanyossagokApplication
                     cmd.Parameters.AddWithValue("@ar", textBoxAr.Text);
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.ExecuteNonQuery();
-                    btnModositas.Text = "Módosítás";
-                    VarosListazas();
+                    btnModositas2.Text = "Módosítás";
+                    LatvanyossagListazas();
                 }
             }
 
