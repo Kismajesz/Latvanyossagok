@@ -278,12 +278,12 @@ namespace LatvanyossagokApplication
                 if (click == true)
                 {
                     btnModositas.Text = "Megerosites";
-                    Int32 indexOfSpace = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).IndexOf('-');
-                    Int32 indexOfSpace2 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).IndexOf('-');
-                    Int32 indexOfSpace3 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).IndexOfAny("0123456789".ToCharArray());
-                    string szoveg1 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).Substring(0, indexOfSpace);
-                    string szoveg2 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).Substring(0, indexOfSpace2);
-                    string szoveg3 = listBoxVaros.GetItemText(listBoxVaros.SelectedItem).Substring(0, indexOfSpace3);
+                    Int32 indexOfSpace = listBoxLatvanyossag.GetItemText(listBoxVaros.SelectedItem).IndexOf('-');
+                    Int32 indexOfSpace2 = listBoxLatvanyossag.GetItemText(listBoxVaros.SelectedItem).IndexOf('-');
+                    Int32 indexOfSpace3 = listBoxLatvanyossag.GetItemText(listBoxVaros.SelectedItem).IndexOfAny("0123456789".ToCharArray());
+                    string szoveg1 = listBoxLatvanyossag.GetItemText(listBoxLatvanyossag.SelectedItem).Substring(0, indexOfSpace);
+                    string szoveg2 = listBoxLatvanyossag.GetItemText(listBoxLatvanyossag.SelectedItem).Substring(0, indexOfSpace2);
+                    string szoveg3 = listBoxLatvanyossag.GetItemText(listBoxLatvanyossag.SelectedItem).Substring(0, indexOfSpace3);
                     textBoxLatvanyossagNev.Text = szoveg1;
                     textBoxLeiras.Text = szoveg2;
                     textBoxAr.Text = szoveg3;
@@ -297,7 +297,7 @@ namespace LatvanyossagokApplication
 
                 if (mod == true)
                 {
-                    var varos = (Varos)listBoxVaros.SelectedItem;
+                    var varos = (Varos)listBoxLatvanyossag.SelectedItem;
                     var id = varos.Id;
                     var cmd = conn.CreateCommand();
                     cmd.CommandText = "UPDATE latvanyossagok SET nev=@nev, leiras=@leiras , ar=@ar Where id=@id";
