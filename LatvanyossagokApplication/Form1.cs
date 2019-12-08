@@ -267,7 +267,7 @@ namespace LatvanyossagokApplication
                 }
             }
         }
-        //Próbálkoztam
+        //Próbálkoztama
         private void BtnModositas2_Click(object sender, EventArgs e)
         {
 
